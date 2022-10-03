@@ -266,7 +266,7 @@ def detect_vertical_roads_under_construction(maze_image):
 	# w=200
 	qq=95
 	ww=107
-	for j in range(1,7):
+	for j in range(1,8):
 		q=100
 		w=200
 			
