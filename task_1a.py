@@ -111,6 +111,8 @@ def detect_traffic_signals(maze_image):
 			
 		q=w+str(cy)
 		traffic_signals.append(q)
+	
+	traffic_signals.sort()
 
 	# print("'traffic signals':",end ='')
 	# print(traffic_signals)
@@ -393,7 +395,7 @@ def detect_medicine_packages(maze_image):
 					# print('triangle',p)
 					li=[]
 					www=str(i+1)
-					vv='shop_'+www
+					vv='Shop_'+www
 					li.append(vv)
 					if p==0:    
 						li.append('Green')
@@ -424,7 +426,7 @@ def detect_medicine_packages(maze_image):
 					
 					li=[]
 					ww=str(i+1)
-					v='shop_'+ww
+					v='Shop_'+ww
 					li.append(v)
 					if p==0:    
 						li.append('Green')
@@ -453,7 +455,7 @@ def detect_medicine_packages(maze_image):
 				else:
 					li=[]
 					w=str(i+1)
-					f='shop_'+w
+					f='Shop_'+w
 					li.append(f)
 					if p==0:    
 						li.append('Green')
