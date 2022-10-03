@@ -568,7 +568,7 @@ def detect_arena_parameters(maze_image):
     arena_parameters['vertical_roads_under_construction']=vertical_roads_under_construction
     medicine_packages_present_present=[]
     medicine_packages_present_present = detect_medicine_packages_present(maze_image)
-    arena_parameters['medicine_packages_present']=medicine_packages_present_present
+    arena_parameters['medicne_packages']=medicine_packages_present_present
 	##############	ADD YOUR CODE HERE	##############
 	
 	##################################################
