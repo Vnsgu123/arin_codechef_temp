@@ -257,7 +257,7 @@ def detect_ArUco_details(image):
             ang=angg
             big.append(small[m])
             big.append(ang)
-            ArUco_marker_angles[m] = big
+            ArUco_marker_angles[i] = big
             m=m+1
 
     # dict1 = sorted(ArUco_marker_angles.items())
