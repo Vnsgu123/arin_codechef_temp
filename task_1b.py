@@ -15,8 +15,8 @@
 *****************************************************************************************
 '''
 
-# Team ID:			[ PB_1481 ]
-# Author List:		[ Hardik ,Rushil ,Arin ,Maitrey ]
+# Team ID:			[ Team-ID ]
+# Author List:		[ Names of team members worked on this file separated by Comma: Name1, Name2, ... ]
 # Filename:			task_1b.py
 # Functions:		detect_Qr_details, detect_ArUco_details
 # 					[ Comma separated list of functions in this file ]
@@ -27,7 +27,6 @@
 ## You have to implement this task with the five available  ##
 ## modules for this task                                    ##
 ##############################################################
-from xml.dom.minidom import TypeInfo
 import numpy as np
 import cv2
 from cv2 import aruco
@@ -68,6 +67,7 @@ def detect_Qr_details(image):
     Qr_codes_details = {}
     # img=cv2.imread('qr_1.png')
     d=pyzbar.decode(image)
+    
     # print(d)
     # Dict ={}
     for i in d:
@@ -78,22 +78,18 @@ def detect_Qr_details(image):
         # print(i.rect)
         x,y,w,h=i.polygon
         # print(x[0])
-        cx=(x[0]+y[0]+w[0]+h[0])/4
-        cy=(x[1]+y[1]+w[1]+h[1])/4
+        cx=int((x[0]+y[0]+w[0]+h[0])/4)
+        cy=int((x[1]+y[1]+w[1]+h[1])/4)
         li.append(cx)
         li.append(cy)
         Qr_codes_details[k]=li
-
-        # print(cx,cy)
-        # print(i.polygon)
-    # print(Qr_codes_details)
-    # cv2.imshow('image',img)
-    # cv2.waitKey(0)
 
 
     ##############	ADD YOUR CODE HERE	##############
     
     ##################################################
+    
+    
     
     return Qr_codes_details    
 
@@ -124,6 +120,7 @@ def detect_ArUco_details(image):
     """    
     ArUco_details_dict = {} #should be sorted in ascending order of ids
     ArUco_corners = {}
+    ArUco_corners = {}
     marker_dict = aruco.Dictionary_get(aruco.DICT_5X5_50)
     param_markers = aruco.DetectorParameters_create()
     dict ={}
@@ -133,7 +130,7 @@ def detect_ArUco_details(image):
     gray_frame = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     marker_corners, marker_IDs, reject = aruco.detectMarkers(gray_frame, marker_dict, parameters=param_markers)
     
-    print(type(marker_IDs))
+    
     
     if marker_corners:
         for ids, corners in zip(marker_IDs, marker_corners):
@@ -164,7 +161,7 @@ def detect_ArUco_details(image):
             lp.append(bottom_left[0])
             lp.append(bottom_left[1])
             lisst.append(lp)
-            w=ids[0]
+            w=int(ids[0])
             ArUco_corners[w]=lisst
         
             cx = (top_right[0]+top_left[0]+bottom_right[0]+bottom_left[0])/4
@@ -175,8 +172,9 @@ def detect_ArUco_details(image):
             list.append(cx)
             list.append(cy)
             small.append(list)
-            k=ids[0]
-            k=int(k)
+            k=int(ids[0])
+            print(type(k))
+            #k=int(k)
             ArUco_corners[k]= lisst
             dict[k] = list
     big = []
@@ -259,15 +257,17 @@ def detect_ArUco_details(image):
             ang=angg
             big.append(small[m])
             big.append(ang)
-            ArUco_marker_angles[i] = big
+            ArUco_marker_angles[m] = big
             m=m+1
 
     # dict1 = sorted(ArUco_marker_angles.items())
     ArUco_details_dict=ArUco_marker_angles
 
+
+
     # cv.imshow("frame", frame)
     # cv.destroyAllWindows()
-    
+
     ##############	ADD YOUR CODE HERE	##############
    
     ##################################################
@@ -291,10 +291,12 @@ def mark_Qr_image(image, Qr_codes_details):
 
 # marking the ArUco marker with the center, angle and corners
 
-def mark_ArUco_image(image,ArUco_details_dict, ArUco_corners):    
+def mark_ArUco_image(image,ArUco_details_dict, ArUco_corners):
+
     for ids, details in ArUco_details_dict.items():
         center = details[0]
         cv2.circle(image, center, 5, (0,0,255), -1)
+
         corner = ArUco_corners[int(ids)]
         cv2.circle(image, (int(corner[0][0]), int(corner[0][1])), 5, (50, 50, 50), -1)
         cv2.circle(image, (int(corner[1][0]), int(corner[1][1])), 5, (0, 255, 0), -1)
@@ -309,6 +311,7 @@ def mark_ArUco_image(image,ArUco_details_dict, ArUco_corners):
         cv2.putText(image,str(ids),(center[0]+int(display_offset/2),center[1]),cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
         angle = details[1]
         cv2.putText(image,str(angle),(center[0]-display_offset,center[1]),cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+
     return image
 
 if __name__ == "__main__":
@@ -333,7 +336,7 @@ if __name__ == "__main__":
         # read image using opencv
         img = cv2.imread(img_file_path)
 
-        print('\n==================h==========================')
+        print('\n============================================')
         print('\nFor '+ marker  +  str(file_num) + '.png')
 
         # testing for Qr images
