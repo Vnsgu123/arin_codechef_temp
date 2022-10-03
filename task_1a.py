@@ -413,8 +413,8 @@ def detect_medicine_packages(maze_image):
 					# cv.drawContours(image, [i], -1, (0, 255, 0), 2)
 					l=[]
 					e=i+1
-					cx=e*100+cx
-					cy=e*100+cy
+					cx=cx
+					cy=cy
 					l.append(cx)
 					l.append(cy)
 					li.append(l)
@@ -444,8 +444,8 @@ def detect_medicine_packages(maze_image):
 					# cv.drawContours(image, [i], -1, (0, 255, 0), 2)
 					l=[]
 					t=i+1
-					cx=t*100+cx
-					cy=t*100+cy
+					cx=cx
+					cy=cy
 					l.append(cx)
 					l.append(cy)
 					li.append(l)
@@ -473,8 +473,8 @@ def detect_medicine_packages(maze_image):
 					# cv.drawContours(image, [i], -1, (0, 255, 0), 2)
 					l=[]
 					g=i+1
-					cx=g*100+cx
-					cy=g*100+cy
+					cx=cx
+					cy=cy
 					l.append(cx)
 					l.append(cy)
 					li.append(l)
