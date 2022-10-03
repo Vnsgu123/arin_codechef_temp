@@ -180,6 +180,7 @@ def detect_ArUco_details(image):
     big = []
     Detected_ArUco_markers ={}
     for i in range(0,marker_IDs.shape[0]):
+        marker_IDs[i][0,]=int(marker_IDs[i][0,])
         Detected_ArUco_markers[marker_IDs[i][0,]] = marker_corners[i][0,]
     ArUco_marker_angles = {}
     cnt = 0
