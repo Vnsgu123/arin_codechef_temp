@@ -192,7 +192,9 @@ def detect_ArUco_details(image):
     right_y = 0
     m=0
     for i in Detected_ArUco_markers:
+        Print(i)
         for j in Detected_ArUco_markers[i]:
+            Print(j)
             if (cnt%4) == 0:
                 ans_x = j[0,]
                 ans_y = j[1,]
