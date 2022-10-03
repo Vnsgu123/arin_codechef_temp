@@ -15,11 +15,11 @@
 *****************************************************************************************
 '''
 
-# Team ID:			[ PB_1481 ]
-# Author List:		[Rushil ,Hardik ,Arin ,Maitrey]
+# Team ID:			[ Team-ID ]
+# Author List:		[ Names of team members worked on this file separated by Comma: Name1, Name2, ... ]
 # Filename:			task_1a.py
 # Functions:		detect_traffic_signals, detect_horizontal_roads_under_construction, detect_vertical_roads_under_construction,
-#					detect_medicine_packages_present, detect_arena_parameters
+#					detect_medicine_packages, detect_arena_parameters
 # 					[ Comma separated list of functions in this file ]
 
 
@@ -62,14 +62,8 @@ def detect_traffic_signals(maze_image):
 	traffic_signals = detect_traffic_signals(maze_image)
 	"""    
 	traffic_signals = []
- 
-    
 
 	##############	ADD YOUR CODE HERE	##############
-	
-	##################################################
-    # frame=cv2.imread('maze_2.png')
-
 	hsv = cv2.cvtColor(maze_image,cv2.COLOR_BGR2HSV)
 	traffic_signals = []
 	l_b = np.array([10,50,50])
@@ -121,7 +115,7 @@ def detect_traffic_signals(maze_image):
 	# print("'traffic signals':",end ='')
 	# print(traffic_signals)
 	cv2.waitKey(0)
-
+	##################################################
 	
 	return traffic_signals
 	
@@ -150,15 +144,6 @@ def detect_horizontal_roads_under_construction(maze_image):
 	horizontal_roads_under_construction = []
 
 	##############	ADD YOUR CODE HERE	##############
-	# import cv2
-	# import numpy as np
-
-	# img=cv2.imread('maze_14.png')
-	# # cv2.imshow('imge',img)
-	# cv2.waitKey(0)
-	# list=[]
-	# q=100
-	# w=200
 	q=100
 	w=200
 	for j in range(1,7):
@@ -222,13 +207,9 @@ def detect_horizontal_roads_under_construction(maze_image):
 			ww=ww+100
 		q=q+100
 		w=w+100
-	# print("'horizontal_road_under_construction':",end ='')
-	# print(horizontal_roads_under_construction)
-
-	cv2.waitKey(0)
-	
+  	
 	##################################################
-	
+	cv2.waitKey(0)
 	return horizontal_roads_under_construction	
 
 def detect_vertical_roads_under_construction(maze_image):
@@ -255,15 +236,6 @@ def detect_vertical_roads_under_construction(maze_image):
 	vertical_roads_under_construction = []
 
 	##############	ADD YOUR CODE HERE	##############
-	# import cv2
-	# import numpy as np
-
-	# img=cv2.imread('maze_2.png')
-	# # cv2.imshow('imge',img)
-	# cv2.waitKey(0)
-	# list=[]
-	# q=100
-	# w=200
 	qq=95
 	ww=107
 	for j in range(1,8):
@@ -335,14 +307,13 @@ def detect_vertical_roads_under_construction(maze_image):
 	# print("'vertical_road_under_construction':",end ='')
 	# print(vertical_roads_under_construction)
 
-	cv2.waitKey(0)
-	
+	cv2.waitKey(0)	
 	##################################################
 	
 	return vertical_roads_under_construction
 
 
-def detect_medicine_packages_present(maze_image):
+def detect_medicine_packages(maze_image):
 
 	"""
 	Purpose:
@@ -361,7 +332,7 @@ def detect_medicine_packages_present(maze_image):
 			numpy array of image returned by cv2 library
 	Returns:
 	---
-	`medicine_packages_present` : [ list ]
+	`medicine_packages` : [ list ]
 			nested list containing details of the medicine packages present.
 			Each element of this list will contain 
 			- Shop number as Shop_n
@@ -370,17 +341,11 @@ def detect_medicine_packages_present(maze_image):
 			- Centroid co-ordinates of the package
 	Example call:
 	---
-	medicine_packages_present = detect_medicine_packages_present(maze_image)
+	medicine_packages = detect_medicine_packages(maze_image)
 	"""    
 	medicine_packages_present = []
 
 	##############	ADD YOUR CODE HERE	##############
-	# import cv2
-	# import numpy as np
-
-	# img = cv2.imread('maze_2.png')
-	# # cv2.imshow('original image ',img)
-	# list =[]
 	z=100
 	q=200
 	for i in range(0,6):
@@ -431,14 +396,14 @@ def detect_medicine_packages_present(maze_image):
 					vv='shop_'+www
 					li.append(vv)
 					if p==0:    
-						li.append('green')
+						li.append('Green')
 					elif p==1:
-						li.append('orange')
+						li.append('Orange')
 					elif p==2:
-						li.append('pink')
+						li.append('Pink')
 					else :
-						li.append('blue')
-					li.append('triangle')
+						li.append('Skyblue')
+					li.append('Triangle')
 					M = cv2.moments(contour)
 					if M['m00'] != 0:
 						cx = int(M['m10']/M['m00'])
@@ -462,14 +427,14 @@ def detect_medicine_packages_present(maze_image):
 					v='shop_'+ww
 					li.append(v)
 					if p==0:    
-						li.append('green')
+						li.append('Green')
 					elif p==1:
-						li.append('orange')
+						li.append('Orange')
 					elif p==2:
-						li.append('pink')
+						li.append('Pink')
 					else :
-						li.append('blue')
-					li.append('square')
+						li.append('Skyblue')
+					li.append('Square')
 					M = cv2.moments(contour)
 					if M['m00'] != 0:
 						cx = int(M['m10']/M['m00'])
@@ -491,14 +456,14 @@ def detect_medicine_packages_present(maze_image):
 					f='shop_'+w
 					li.append(f)
 					if p==0:    
-						li.append('green')
+						li.append('Green')
 					elif p==1:
-						li.append('orange')
+						li.append('Orange')
 					elif p==2:
-						li.append('pink')
+						li.append('Pink')
 					else :
-						li.append('blue')
-					li.append('circle')
+						li.append('Skyblue')
+					li.append('Circle')
 					M = cv2.moments(contour)
 					if M['m00'] != 0:
 						cx = int(M['m10']/M['m00'])
@@ -521,7 +486,6 @@ def detect_medicine_packages_present(maze_image):
 		q=q+100
 	# print(medicine_packages_present)
 	cv2.waitKey(0)
-
 	##################################################
 
 	return medicine_packages_present
@@ -566,9 +530,9 @@ def detect_arena_parameters(maze_image):
     vertical_roads_under_construction = []
     vertical_roads_under_construction = detect_vertical_roads_under_construction(maze_image)
     arena_parameters['vertical_roads_under_construction']=vertical_roads_under_construction
-    medicine_packages_present_present=[]
-    medicine_packages_present_present = detect_medicine_packages_present(maze_image)
-    arena_parameters['medicne_packages']=medicine_packages_present_present
+    medicine_packages_present=[]
+    medicine_packages_present = detect_medicine_packages(maze_image)
+    arena_parameters['medicine_packages_present']=medicine_packages_present
 	##############	ADD YOUR CODE HERE	##############
 	
 	##################################################
