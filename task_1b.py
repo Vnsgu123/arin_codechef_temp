@@ -233,10 +233,11 @@ def detect_ArUco_details(image):
             angg=ang
 
             if angg>=90 and angg<=270 :
-                angg=angg-90-1
                 angg=angg-90
+                if angg > 150:
+                    angg=angg-1
             elif angg<=90 :
-                angg=90-angg+2
+                angg=90-angg-2
                 angg=-angg
             else :
                 angg = 90 + (360-angg)
