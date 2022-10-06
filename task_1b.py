@@ -193,7 +193,7 @@ def detect_ArUco_details(image):
     right_y = 0
     m=0
     for i in Detected_ArUco_markers:
-        #i=int(i)
+        i=int(i)
         for j in Detected_ArUco_markers[i]:
             #print("J Line")
             #print(j)
