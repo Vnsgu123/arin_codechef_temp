@@ -173,13 +173,14 @@ def detect_ArUco_details(image):
             list.append(cy)
             small.append(list)
             k=int(ids[0])
-            print(type(k))
+            #print(type(k))
             #k=int(k)
             ArUco_corners[k]= lisst
             dict[k] = list
     big = []
     Detected_ArUco_markers ={}
     for i in range(0,marker_IDs.shape[0]):
+        i=int(i)
         marker_IDs[i][0,]=int(marker_IDs[i][0,])
         Detected_ArUco_markers[marker_IDs[i][0,]] = marker_corners[i][0,]
     ArUco_marker_angles = {}
@@ -192,9 +193,10 @@ def detect_ArUco_details(image):
     right_y = 0
     m=0
     for i in Detected_ArUco_markers:
-        Print(i)
+        #i=int(i)
         for j in Detected_ArUco_markers[i]:
-            Print(j)
+            #print("J Line")
+            #print(j)
             if (cnt%4) == 0:
                 ans_x = j[0,]
                 ans_y = j[1,]
