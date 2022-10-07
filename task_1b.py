@@ -146,7 +146,7 @@ def detect_ArUco_details(image):
             lisst=[]
             bottom_left = corners[3].ravel()
             lp=[]
-            lp.append(top_right0])
+            lp.append(top_right[0])
             lp.append(top_right[1])
             lisst.append(lp)
             lp=[]
