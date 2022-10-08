@@ -189,7 +189,8 @@ def detect_ArUco_details(image):
             angle=math.atan2(x,y) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
             ant=math.atan(angle) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
             angle = (angle*180)/np.pi
-            # print(ant)
+            print(ant)
+            print(angle)
             angle=int(angle)
             angle=math.ceil(angle)
             
