@@ -190,14 +190,16 @@ def detect_ArUco_details(image):
             angle = (angle*180)/np.pi
             # print("-------------",angle)
             angle=int(angle)
-            angle=math.floor(angle)
-            if angle > 0 and angle > 90:
-                angle =angle -1
+            angle=math.ceil(angle)
+            if angle == -180 :
+                angle =180
+            # if angle > 0 and angle > 90:
+            #     angle =angle
             # elif angle > 0 and angle < 90:
             #     angle =angle + 90
             #     angle = -angle
-            if angle < 0 and angle < -90:
-                angle = angle -1
+            # if angle < 0 and angle < -90:
+            #     angle = angle
             #     angle = -angle
             # elif angle < 0 and angle >90:
             #     angle = -angle
@@ -294,6 +296,34 @@ if __name__ == "__main__":
     else:
 
         marker = 'aruco'
+#     vid = cv2.VideoCapture(0)
+  
+#     while(True):
+        
+#         # Capture the video frame
+#         # by frame
+#         ret, frame = vid.read()
+    
+#         # Display the resulting frame
+#         cv2.imshow('frame', frame)
+#         ArUco_details_dict, ArUco_corners = detect_ArUco_details(frame)
+#         print("Detected details of ArUco: " , ArUco_details_dict)
+
+#         #displaying the marked image
+#         img = mark_ArUco_image(frame, ArUco_details_dict, ArUco_corners)  
+#         cv2.imshow("imgqq",img)
+
+        
+#         # the 'q' button is set as the
+#         # quitting button you may use any
+#         # desired button of your choice
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
+  
+# # After the loop release the cap object
+# vid.release()
+# # Destroy all the windows
+# cv2.destroyAllWindows()
 
     for file_num in range(0,2):
         img_file_path = img_dir_path +  marker + '_' + str(file_num) + '.png'
