@@ -187,13 +187,12 @@ def detect_ArUco_details(image):
             x=list[0]-pt1[0] # unpacking tuple
             y=list[1]-pt1[1]
             angle=math.atan2(x,y) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
-            ant=math.atan(angle) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
-            angle = (angle*180)/np.pi
+            ant=math.atan(angle)
             print(ant)
-            print(angle)
+            angle = (angle*180)/np.pi
+            # print("-------------",angle)
             angle=int(angle)
             angle=math.ceil(angle)
-            
             if angle == -180 :
                 angle =180
             # if angle > 0 and angle > 90:
@@ -201,8 +200,8 @@ def detect_ArUco_details(image):
             # elif angle > 0 and angle < 90:
             #     angle =angle + 90
             #     angle = -angle
-            # if angle < 0 and angle < -90:
-            #     angle = angle
+            if angle < 0 and angle < -90:
+                angle = angle +1
             #     angle = -angle
             # elif angle < 0 and angle >90:
             #     angle = -angle
