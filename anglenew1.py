@@ -191,13 +191,13 @@ def detect_ArUco_details(image):
             # print("-------------",angle)
             angle=int(angle)
             angle=math.floor(angle)
-            # if angle > 0 and angle > 90:
-            #     angle = 360 - 90 - angle -1
+            if angle > 0 and angle > 90:
+                angle =angle -1
             # elif angle > 0 and angle < 90:
             #     angle =angle + 90
             #     angle = -angle
-            # elif angle < 0 and angle < 90:
-            #     angle = angle +90
+            if angle < 0 and angle < -90:
+                angle = angle -1
             #     angle = -angle
             # elif angle < 0 and angle >90:
             #     angle = -angle
