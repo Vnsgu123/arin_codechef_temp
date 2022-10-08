@@ -200,7 +200,7 @@ def detect_ArUco_details(image):
             # elif angle > 0 and angle < 90:
             #     angle =angle + 90
             #     angle = -angle
-            if angle < 0 and angle < -90:
+            if angle < 0 and angle > -90:
                 angle = angle +1
             #     angle = -angle
             # elif angle < 0 and angle >90:
@@ -230,6 +230,7 @@ def detect_ArUco_details(image):
     Detected_ArUco_markers ={}
     # # dict1 = sorted(ArUco_marker_angles.items())
     ArUco_details_dict=dict
+    print(ArUco_details_dict)
     # print(ArUco_corners)
 
 
