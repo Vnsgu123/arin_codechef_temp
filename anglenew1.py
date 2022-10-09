@@ -141,16 +141,19 @@ def detect_ArUco_details(image):
             #     frame, [corners.astype(np.int32)], True, (0, 255, 255), 4, cv.LINE_AA
             # )
             # aruco.drawDetectedMarkers(frame,marker_corners,marker_IDs)
+            print(corners)
             corners = corners.reshape(4, 2)
-            corners = corners.astype(int)
+            # corners = corners.astype(int)
             top_right = corners[0].ravel()
             top_left = corners[1].ravel()
             bottom_right = corners[2].ravel()
             lisst=[]
             bottom_left = corners[3].ravel()
+            p=(corners[1][0]+corners[0][0])/2
+            q=(corners[1][1]+corners[0][1])/2
             pt1=[]
-            pt1.append(int((corners[1][0]+corners[0][0])/2))
-            pt1.append(int((corners[1][1]+corners[0][1])/2))
+            pt1.append(int(p))
+            pt1.append(int(q))
             # print(pt1)
 
             lp=[]
@@ -173,24 +176,26 @@ def detect_ArUco_details(image):
             ArUco_corners[w]=lisst
         
             cx = (top_right[0]+top_left[0]+bottom_right[0]+bottom_left[0])/4
-            cx=int(cx)
+            cx=(cx)
             cy = (top_right[1]+top_left[1]+bottom_right[1]+bottom_left[1])/4
-            cy=int(cy)
+            cy=(cy)
             list =[]
-            list.append(cx)
-            list.append(cy)
+            # cx=int(cx)
+            # cy=int(cy)
+            list.append(int(cx))
+            list.append(int(cy))
             trigger=0
             # angle_list_1 = list(range(359,0,-1))
             # angle_list_2 = list(range(359,0,-1))
             # angle_list_2 = angle_list_2[-90:] + angle_list_2[:-90]  
             # print(pt1,list)          
-            x=list[0]-pt1[0] # unpacking tuple
-            y=list[1]-pt1[1]
+            x=cx-p # unpacking tuple
+            y=cy-q
             angle=math.atan2(x,y) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
             ant=math.atan(angle)
             print(ant)
             angle = (angle*180)/np.pi
-            # print("-------------",angle)
+            print("-------------",angle)
             angle=int(angle)
             angle=math.ceil(angle)
             if angle == -180 :
@@ -200,12 +205,12 @@ def detect_ArUco_details(image):
             # elif angle > 0 and angle < 90:
             #     angle =angle + 90
             #     angle = -angle
-            if angle < 0 and :
-                angle = angle +1
+            if angle < 0 and angle < -90:
+                angle = angle
             #     angle = -angle
             # elif angle < 0 and angle >90:
             #     angle = -angle
-            #     angle = 90 -angle
+            #      angle = 90 -angle
             # print(angle)
             # if trigger == 0:
             #     angle = angle_list_2[angle]
@@ -227,10 +232,10 @@ def detect_ArUco_details(image):
             dict[k] = small
     big = []
     # print("--------------",dict)
-    Detected_ArUco_markers ={}
+    # Detected_ArUco_markers ={}
     # # dict1 = sorted(ArUco_marker_angles.items())
     ArUco_details_dict=dict
-    print(ArUco_details_dict)
+    # ArUco_corners=int(ArUco_corners)
     # print(ArUco_corners)
 
 
@@ -241,7 +246,7 @@ def detect_ArUco_details(image):
     ##############	ADD YOUR CODE HERE	##############
    
     ##################################################
-    # print(ArUco_corners)
+    print(ArUco_corners)
     return ArUco_details_dict, ArUco_corners 
 
 ######### YOU ARE NOT ALLOWED TO MAKE CHANGES TO THE CODE BELOW #########	
