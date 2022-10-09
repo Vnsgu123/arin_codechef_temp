@@ -27,6 +27,7 @@
 ## You have to implement this task with the five available  ##
 ## modules for this task                                    ##
 ##############################################################
+from typing import OrderedDict
 import numpy as np
 import cv2
 from cv2 import aruco
@@ -187,14 +188,15 @@ def detect_ArUco_details(image):
             x=list[0]-pt1[0] # unpacking tuple
             y=list[1]-pt1[1]
             angle=math.atan2(x,y) #takes 2 points nad give angle with respect to horizontal axis in range(-180,180)
+            print("\\\\",angle)
             ant=math.atan(angle)
             print(ant)
             angle = (angle*180)/np.pi
             print("-------------",angle)
             angle=int(angle)
-            angle=math.ceil(angle)
-            if angle == -180 :
-                angle =180
+            # angle=math.ceil(angle)
+            # if angle == -180 :
+            #     angle =180
             # if angle > 0 and angle > 90:
             #     angle =angle
             # elif angle > 0 and angle < 90:
@@ -229,7 +231,9 @@ def detect_ArUco_details(image):
     # print("--------------",dict)
     Detected_ArUco_markers ={}
     # # dict1 = sorted(ArUco_marker_angles.items())
-    ArUco_details_dict=dict
+    dict1 = OrderedDict(sorted(dict.items()))
+    ArUco_details_dict=dict1
+    
     # print(ArUco_corners)
 
 
