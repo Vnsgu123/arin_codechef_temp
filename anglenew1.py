@@ -155,12 +155,12 @@ def detect_ArUco_details(image):
             # print(pt1)
 
             lp=[]
-            lp.append(top_right[0])
-            lp.append(top_right[1])
+            lp.append(int(top_right[0]))
+            lp.append(int(top_right[1]))
             lisst.append(lp)
             lp=[]
-            lp.append(top_left[0])
-            lp.append(top_left[1])
+            lp.append(int(top_left[0]))
+            lp.append(int(top_left[1]))
             lisst.append(lp)
             lp=[]
             lp.append(bottom_right[0])
@@ -234,10 +234,10 @@ def detect_ArUco_details(image):
     # print("--------------",dict)
     Detected_ArUco_markers ={}
     # # dict1 = sorted(ArUco_marker_angles.items())
-    dict1 = OrderedDict(sorted(dict.items()))
-    ArUco_details_dict=dict1
+    # dict1 = OrderedDict(sorted(dict.items()))
+    ArUco_details_dict=dict
     
-    # print(ArUco_corners)
+    print(ArUco_details_dict)
 
 
 
